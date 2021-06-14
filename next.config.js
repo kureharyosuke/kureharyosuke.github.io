@@ -1,5 +1,4 @@
-const prod = process.env.NODE_ENV === "production";
-
 module.exports = {
-  "process.env.BACKEND_URL": prod ? "/kureharyosuke.github.io/gh-pages" : "",
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH,
+  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH,
 };
