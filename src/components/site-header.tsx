@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import StaggerText from './stagger-text'
 import { cn } from '@/lib/utils'
 
 const LINKS = [
@@ -24,7 +25,7 @@ export default function SiteHeader({ className }: { className?: string }) {
         href="/"
         className="font-disp font-medium text-base leading-[1.2] no-underline hover:underline decoration-1 underline-offset-4"
       >
-        Hex&nbsp;Apply
+        <StaggerText text="Hex Apply" delayMs={24} />
       </Link>
       <ul className="flex gap-5 text-[13px] text-soft">
         {LINKS.map((link) => (

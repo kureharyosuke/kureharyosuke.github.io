@@ -1,4 +1,5 @@
 import type { CSSProperties, JSX } from 'react'
+import StaggerText from './stagger-text'
 import { cn } from '@/lib/utils'
 
 type RevealSize = 'display' | 'headline'
@@ -7,6 +8,8 @@ type RevealProps = {
   as?: keyof JSX.IntrinsicElements
   size?: RevealSize
   className?: string
+  /** Per-letter hover stagger (21st.dev "Text Stagger Hover"). */
+  stagger?: boolean
 }
 
 /**
@@ -14,7 +17,13 @@ type RevealProps = {
  * "Slide Up Text" (tom/Spell) — CSS overflow mask + staggered
  * delays via .anim-rise (globals.css), no JS runtime.
  */
-export default function Reveal({ lines, as: Tag = 'div', size = 'display', className }: RevealProps) {
+export default function Reveal({
+  lines,
+  as: Tag = 'div',
+  size = 'display',
+  className,
+  stagger = false,
+}: RevealProps) {
   return (
     <Tag
       className={cn(
@@ -30,7 +39,7 @@ export default function Reveal({ lines, as: Tag = 'div', size = 'display', class
             className="anim-rise"
             style={{ '--delay': `${i * 90}ms` } as CSSProperties}
           >
-            {line}
+            {stagger ? <StaggerText text={line} /> : line}
           </span>
         </span>
       ))}

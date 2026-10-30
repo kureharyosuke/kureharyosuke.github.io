@@ -9,7 +9,7 @@ import SiteFooter from '@/components/site-footer'
 
 export const metadata: Metadata = {
   title: 'hex apply — portfolio',
-  description: 'Design engineer portfolio — monochrome broadsheet.',
+  description: 'Yunseok Oh — design engineer portfolio, monochrome broadsheet.',
 }
 
 /**
@@ -24,7 +24,7 @@ export default function HomePage() {
       <SiteHeader />
       <main className="grow">
         <section className="px-5 pt-16 pb-10">
-          <Reveal as="h1" lines={['Kureha', 'Ryosuke —']} />
+          <Reveal as="h1" lines={['Yunseok', 'Oh —']} stagger />
           <div className="mt-8 flex flex-wrap justify-between gap-4 font-sans text-[13px] leading-[1.2] text-soft">
             <p className="text-left">
               Design engineer. Frontend systems, editorial grids,
