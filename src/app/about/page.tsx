@@ -5,8 +5,8 @@ import SiteFooter from '@/components/site-footer'
 import Reveal from '@/components/reveal'
 
 export const metadata: Metadata = {
-  title: 'hex apply — about',
-  description: 'About Yunseok Oh — design engineer.',
+  title: 'Yunseok Oh — about',
+  description: 'About Yunseok Oh — design & AI engineer at BCROSSB.inc, Tokyo.',
 }
 
 /**
@@ -19,24 +19,27 @@ export default function AboutPage() {
       <main className="grow px-5 pt-16 pb-10">
         <Reveal as="h1" size="headline" lines={['About']} />
         <div className="mt-8 max-w-prose">
-          <p className="font-sans text-[13px] leading-[1.6] text-soft">
-            Yunseok Oh is a design engineer working on frontend systems,
-            editorial grids and static-first tooling, under the studio name
-            Hex&nbsp;Apply.
+          <p className="font-sans text-[15px] leading-[1.6] text-soft text-left">
+            Yunseok Oh is a design &amp; AI engineer based in Tokyo, working at
+            BCROSSB.inc. He ships agent systems as open source: persistent
+            memory for coding agents, agent networks built on Claude Code and
+            Codex, legal data infrastructure for Korean statutes, and skills
+            frameworks that make agents think like the laziest senior dev in
+            the room.
           </p>
         </div>
         <dl className="mt-10 border-t border-b border-ink">
-          <div className="flex items-baseline justify-between border-b border-ink px-1 py-4 last:border-b-0">
-            <dt className="font-sans text-[11px] uppercase tracking-[0.08em] text-faint">Studio</dt>
-            <dd className="font-sans text-[13px] text-soft">Hex Apply</dd>
+          <div className="flex items-baseline justify-between border-b border-ink px-1 py-4">
+            <dt className="font-sans text-[11px] uppercase tracking-[0.08em] text-faint">Company</dt>
+            <dd className="font-sans text-[13px] text-soft">BCROSSB.inc</dd>
           </div>
-          <div className="flex items-baseline justify-between border-b border-ink px-1 py-4 last:border-b-0">
+          <div className="flex items-baseline justify-between border-b border-ink px-1 py-4">
             <dt className="font-sans text-[11px] uppercase tracking-[0.08em] text-faint">Focus</dt>
-            <dd className="font-sans text-[13px] text-soft">Frontend / systems / editorial</dd>
+            <dd className="font-sans text-[13px] text-soft">Agent systems · AI tooling · Editorial design</dd>
           </div>
           <div className="flex items-baseline justify-between px-1 py-4">
             <dt className="font-sans text-[11px] uppercase tracking-[0.08em] text-faint">Base</dt>
-            <dd className="font-sans text-[13px] text-soft">Tokyo / Remote</dd>
+            <dd className="font-sans text-[13px] text-soft">Tokyo, Japan</dd>
           </div>
         </dl>
         <Link

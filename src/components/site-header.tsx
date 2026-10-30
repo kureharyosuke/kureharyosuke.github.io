@@ -10,13 +10,15 @@ const LINKS = [
 
 /**
  * Wordmark row. Deliberately a div (not <nav>) — per the
- * Altason review. Underline-only hovers, left aligned.
+ * Altason review. The hairline under it is a scroll progress
+ * bar (21st.dev "Scroll Progress", ibelick) scrubbed by the
+ * root scroll timeline, CSS-only.
  */
 export default function SiteHeader({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        'sticky top-0 z-10 flex items-baseline justify-between bg-background px-5 py-4 border-b border-ink',
+        'relative sticky top-0 z-10 flex items-baseline justify-between bg-background px-5 py-4 border-b border-ink',
         className,
       )}
       aria-label="Site"
@@ -25,7 +27,7 @@ export default function SiteHeader({ className }: { className?: string }) {
         href="/"
         className="font-disp font-medium text-base leading-[1.2] no-underline hover:underline decoration-1 underline-offset-4"
       >
-        <StaggerText text="Hex Apply" delayMs={24} />
+        <StaggerText text="Yunseok Oh" delayMs={24} />
       </Link>
       <ul className="flex gap-5 text-[13px] text-soft">
         {LINKS.map((link) => (
@@ -39,6 +41,12 @@ export default function SiteHeader({ className }: { className?: string }) {
           </li>
         ))}
       </ul>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 -bottom-px h-[3px]"
+      >
+        <div className="scroll-progress h-full bg-ink" />
+      </div>
     </div>
   )
 }
