@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import SiteHeader from '@/components/site-header'
-import SiteFooter from '@/components/site-footer'
+import StickerSlapFooter from '@/components/sticker-slap-footer'
 import Reveal from '@/components/reveal'
 
 export const metadata: Metadata = {
@@ -49,7 +49,7 @@ export default function AboutPage() {
           → Back to the landing sheet
         </Link>
       </main>
-      <SiteFooter />
+      <StickerSlapFooter />
     </div>
   )
 }

@@ -5,7 +5,7 @@ import Reveal from '@/components/reveal'
 import Ticker from '@/components/ticker'
 import FeaturedWork from '@/components/featured-work'
 import IndexList from '@/components/index-list'
-import SiteFooter from '@/components/site-footer'
+import StickerSlapFooter from '@/components/sticker-slap-footer'
 import ScrollWordReveal from '@/components/scroll-word-reveal'
 
 export const metadata: Metadata = {
@@ -83,7 +83,7 @@ export default function HomePage() {
 
         <DriftBand />
       </main>
-      <SiteFooter />
+      <StickerSlapFooter />
     </div>
   )
 }
