@@ -1,20 +1,27 @@
 import Link from 'next/link'
-import StaggerText from './stagger-text'
 import { cn } from '@/lib/utils'
+import ScriptWordmark from './script-wordmark'
 
-const LINKS = [
-  { href: '/#work', label: 'Work' },
-  { href: '/#index', label: 'Index' },
-  { href: '/about', label: 'About' },
-]
+export type HeaderLink = { href: string; label: string }
+export type SwitcherItem = { href: string; label: string; current: boolean }
 
 /**
  * Wordmark row. Deliberately a div (not <nav>) — per the
- * Altason review. The hairline under it is a scroll progress
+ * Altason review. The felt-tip ScriptWordmark replaces the text
+ * logo (same single-stroke alphabet as the favicon and the
+ * sticker footer). The hairline under it is a scroll progress
  * bar (21st.dev "Scroll Progress", ibelick) scrubbed by the
  * root scroll timeline, CSS-only.
  */
-export default function SiteHeader({ className }: { className?: string }) {
+export default function SiteHeader({
+  links,
+  switcher: switcherItems,
+  className,
+}: {
+  links: HeaderLink[]
+  switcher: SwitcherItem[]
+  className?: string
+}) {
   return (
     <div
       className={cn(
@@ -25,19 +32,37 @@ export default function SiteHeader({ className }: { className?: string }) {
     >
       <Link
         href="/"
-        className="font-disp font-medium text-base leading-[1.2] no-underline hover:underline decoration-1 underline-offset-4"
+        className="text-ink no-underline"
+        aria-label="Yunseok Oh — home"
       >
-        <StaggerText text="Yunseok Oh" delayMs={24} />
+        <ScriptWordmark text="yunseok oh." />
       </Link>
-      <ul className="flex gap-5 text-[13px] text-soft">
-        {LINKS.map((link) => (
-          <li key={link.href}>
+      <ul className="flex items-baseline gap-5 text-[13px] text-soft">
+        {links.map((link) => (
+          <li key={link.href} className="hidden sm:block">
             <Link
               href={link.href}
               className="no-underline hover:underline decoration-1 underline-offset-4"
             >
               {link.label}
             </Link>
+          </li>
+        ))}
+        {switcherItems.map((item) => (
+          <li key={item.href} className="tabular-nums">
+            {item.current ? (
+              <span className="text-ink underline decoration-1 underline-offset-4">
+                {item.label}
+              </span>
+            ) : (
+              <Link
+                href={item.href}
+                className="no-underline hover:underline decoration-1 underline-offset-4"
+                hrefLang={item.label === '한국어' ? 'ko' : item.label === 'English' ? 'en' : 'ja'}
+              >
+                {item.label}
+              </Link>
+            )}
           </li>
         ))}
       </ul>

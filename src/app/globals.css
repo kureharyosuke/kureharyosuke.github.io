@@ -206,6 +206,22 @@
   }
 
   /*
+   * SDLC rail — the vertical judgment line in the Practice section
+   * draws itself as the step list scrolls through the viewport.
+   */
+  .sdlc-rail {
+    animation: rail-grow linear both;
+    animation-timeline: view(block);
+    animation-range: entry 10% exit 75%;
+    transform-origin: 0 0;
+  }
+
+  @keyframes rail-grow {
+    from { transform: scaleY(0); }
+    to { transform: scaleY(1); }
+  }
+
+  /*
    * Scroll word reveal (21st.dev / motiondotdev) — words step up
    * from faint ink to full as the paragraph scrolls into view.
    * Stagger comes from a per-word --wr offset in the timeline range.
@@ -238,9 +254,11 @@
   .word-reveal > span,
   .drift-down,
   .drift-up,
-  .scroll-progress {
+  .scroll-progress,
+  .sdlc-rail {
     animation: none !important;
     opacity: 1;
+    transform: none;
   }
 }
 

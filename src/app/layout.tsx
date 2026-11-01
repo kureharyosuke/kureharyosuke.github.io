@@ -15,13 +15,14 @@ const interTight = Inter_Tight({
 })
 
 export const metadata: Metadata = {
-  title: 'hex apply',
-  description: 'Design engineer portfolio — monochrome broadsheet.',
+  title: 'Yunseok Oh — portfolio',
+  description:
+    'Yunseok Oh — design & AI engineer at BCROSSB.inc. Agent systems, agent memory, skills and tooling.',
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${interTight.variable}`}>
+    <html lang="ko" className={`${inter.variable} ${interTight.variable}`}>
       <body>{children}</body>
     </html>
   )

@@ -16,87 +16,25 @@ type Entry = {
   blurb: string
 }
 
-/* Real initiatives from github.com/kureharyosuke */
-const ENTRIES: Entry[] = [
-  {
-    n: '01',
-    title: 'legalize-kr',
-    role: 'Legal data',
-    year: '2026',
-    href: 'https://github.com/kureharyosuke/legalize-kr',
-    blurb: 'Modeling South-Korean statutes as a Git repository — one Markdown file per law, amendments tracked by their actual promulgation dates.',
-  },
-  {
-    n: '02',
-    title: 'agentmemory',
-    role: 'Agent systems',
-    year: '2026',
-    href: 'https://github.com/kureharyosuke/agentmemory',
-    blurb: 'Persistent memory for AI coding agents, distilled from production agent runs.',
-  },
-  {
-    n: '03',
-    title: 'ponytail',
-    role: 'Skills · DX',
-    year: '2026',
-    href: 'https://github.com/kureharyosuke/ponytail',
-    blurb: 'A skill that makes AI agents think like the laziest senior dev in the room — the shortest path that actually works.',
-  },
-  {
-    n: '04',
-    title: 'openrig',
-    role: 'Agent orchestration',
-    year: '2026',
-    href: 'https://github.com/kureharyosuke/openrig',
-    blurb: 'Build your own network of agents out of Claude Code, Codex and friends.',
-  },
-  {
-    n: '05',
-    title: 'Agent-Reach',
-    role: 'Agent tooling',
-    year: '2026',
-    href: 'https://github.com/kureharyosuke/Agent-Reach',
-    blurb: 'Give your AI agent eyes to see the entire internet — read, save and index.',
-  },
-  {
-    n: '06',
-    title: 'rea',
-    role: 'Reverse engineering',
-    year: '2026',
-    href: 'https://github.com/kureharyosuke/rea',
-    blurb: 'Reverse engineer anything with agents — from app behavior down to the bytes.',
-  },
-  {
-    n: '07',
-    title: 'hyperframes',
-    role: 'Video pipelines',
-    year: '2026',
-    href: 'https://github.com/kureharyosuke/hyperframes',
-    blurb: 'Write HTML. Render video. Built for agents.',
-  },
-  {
-    n: '08',
-    title: 'skills',
-    role: 'Engineering DX',
-    year: '2026',
-    href: 'https://github.com/kureharyosuke/skills',
-    blurb: 'Skills for real engineers — straight from the .agents directory.',
-  },
-]
-
 /**
  * Selected index — shadcn Accordion restyled as ruled broadsheet
  * rows: radius 0, black hairlines, display type triggers.
  * Rows rise into view on scroll (view-rise). Hover underlines
- * only; colors never change.
+ * only; colors never change. Copy arrives via the i18n dictionary.
  */
-export default function IndexList({ className }: { className?: string }) {
+export default function IndexList({
+  entries,
+  className,
+}: {
+  entries: Entry[]
+  className?: string
+}) {
   return (
     <Accordion
       type="multiple"
       className={cn('border-t border-b border-ink', className)}
     >
-      {ENTRIES.map((entry) => (
+      {entries.map((entry) => (
         <AccordionItem
           key={entry.n}
           value={entry.n}

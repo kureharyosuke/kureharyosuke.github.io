@@ -13,37 +13,6 @@ type Work = {
   plate: 'lines' | 'dots' | 'hatch'
 }
 
-/* Real projects from github.com/kureharyosuke */
-const WORK: Work[] = [
-  {
-    n: '01',
-    title: 'legalize-kr',
-    year: '2026',
-    field: 'Legal data',
-    href: 'https://github.com/kureharyosuke/legalize-kr',
-    blurb: '대한민국 법령을 Git 저장소로 관리합니다. 법령마다 Markdown 파일을 두고, 개정은 실제 공포일자를 따라갑니다.',
-    plate: 'lines',
-  },
-  {
-    n: '02',
-    title: 'agentmemory',
-    year: '2026',
-    field: 'Agent systems',
-    href: 'https://github.com/kureharyosuke/agentmemory',
-    blurb: 'AI 코딩 에이전트를 위한 영구 메모리 — 실전에서 다듬어진 persistent memory.',
-    plate: 'dots',
-  },
-  {
-    n: '03',
-    title: 'ponytail',
-    year: '2026',
-    field: 'Skills · DX',
-    href: 'https://github.com/kureharyosuke/ponytail',
-    blurb: 'AI 에이전트가 가장 게으른 시니어 개발자처럼 생각하게 만드는 스킬 — laziest solution that actually works.',
-    plate: 'hatch',
-  },
-]
-
 /* Monochrome pattern plates — CSS patterns, no bitmaps (static export). */
 const PLATES = {
   lines: 'bg-[image:repeating-linear-gradient(90deg,var(--color-ink)_0,var(--color-ink)_1px,transparent_1px,transparent_14px)]',
@@ -57,10 +26,16 @@ const PLATES = {
  * pins below the header at a stepped offset, the next card rides
  * over it. view-rise fades each deck in on scroll.
  */
-export default function FeaturedWork({ className }: { className?: string }) {
+export default function FeaturedWork({
+  work,
+  className,
+}: {
+  work: Work[]
+  className?: string
+}) {
   return (
     <ul className={cn('grid grid-cols-1 border-t border-ink', className)}>
-      {WORK.map((item, i) => (
+      {work.map((item, i) => (
         <li
           key={item.n}
           className="view-rise border-b border-ink bg-background"
