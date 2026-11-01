@@ -38,16 +38,16 @@ export default function AboutPage({ d }: { d: Dict }) {
       </main>
       <StickerSlapFooter
         wordmark="ryosuke kureha."
-        navHref={d.locale === 'ko' ? '/#work' : `/${d.locale}/#work`}
+        navHref="/"
+        navLabel="home"
         jobs={[
           { title: 'product engineering' },
-          { title: 'AI automation' },
+          { title: 'software architecture' },
         ]}
-        address={['bcrossb.inc', 'tokyo, japan']}
+        address={[]}
         note="*github is the inbox — issues are the quicker way in."
         credits={[
           { role: 'design & code', name: 'ryosuke kureha' },
-          { role: 'at', name: 'bcrossb.inc, tokyo' },
           { role: 'type', name: 'inter tight + felt-tip script' },
         ]}
       />

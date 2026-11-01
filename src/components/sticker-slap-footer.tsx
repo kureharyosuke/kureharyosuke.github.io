@@ -4,7 +4,7 @@ import * as React from "react"
 
 /**
  * Sticker Slap Footer (21st.dev community pattern) — adapted to the
- * Yunseok Oh brand: monochrome die-cut stickers (white cut + ink details),
+ * Ryosuke Kureha brand: monochrome die-cut stickers (ink details,
  * black panel on paper frame, GitHub as the inbox.
  *
  * Storyboard: the panel grows as the footer scrolls in (--ssf-sp, scroll-linked),
@@ -533,7 +533,7 @@ const linkProps = (href?: string) => ({
 })
 
 export default function StickerSlapFooter({
-  wordmark = "yunseok oh.",
+  wordmark = "ryosuke kureha.",
   homeHref = "/",
   navLabel = "work",
   navHref = "/#work",
@@ -545,7 +545,7 @@ export default function StickerSlapFooter({
     { title: "frontend systems", href: "/about" },
   ],
   officeLabel = "studio",
-  address = ["bcrossb.inc", "tokyo, japan"],
+  address = [],
   mapLabel = "",
   mapHref = "",
   contactLabel = "contact",
@@ -555,8 +555,7 @@ export default function StickerSlapFooter({
   socials = [{ kind: "github", href: "https://github.com/kureharyosuke", label: "GitHub profile" }],
   stickers = ["burst", { kind: "bubble", text: "oh!" }, "smiley", "heart", "daisy", "bolt"],
   credits = [
-    { role: "design & code", name: "yunseok oh" },
-    { role: "at", name: "bcrossb.inc, tokyo" },
+    { role: "design & code", name: "ryosuke kureha" },
     { role: "type", name: "inter tight + felt-tip script" },
   ],
   height = "100svh",

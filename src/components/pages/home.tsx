@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import SiteHeader from '@/components/site-header'
 import Reveal from '@/components/reveal'
-import FeaturedWork from '@/components/featured-work'
-import Process from '@/components/process'
+import Approach from '@/components/approach'
 import TechStack from '@/components/tech-stack'
 import StickerSlapFooter from '@/components/sticker-slap-footer'
 import ScrollWordReveal from '@/components/scroll-word-reveal'
@@ -46,11 +45,19 @@ export default function HomePage({ d }: { d: Dict }) {
             />
             <div className="mt-2 flex gap-6 font-sans text-[13px] text-ink">
               <Link
-                href={d.locale === 'ko' ? '/#work' : `/${d.locale}/#work`}
+                href={d.locale === 'ko' ? '/#about' : `/${d.locale}/#about`}
                 className="no-underline hover:underline decoration-1 underline-offset-4"
               >
-                {d.hero.ctaWork}
+                {d.hero.ctaAbout}
               </Link>
+              <a
+                href={d.hero.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="no-underline hover:underline decoration-1 underline-offset-4"
+              >
+                {d.hero.ctaGithub} ↗
+              </a>
               <Link
                 href={d.locale === 'ko' ? '/#contact' : `/${d.locale}/#contact`}
                 className="no-underline hover:underline decoration-1 underline-offset-4"
@@ -61,79 +68,76 @@ export default function HomePage({ d }: { d: Dict }) {
           </div>
         </section>
 
-        {/* ABOUT — the three principles */}
+        {/* ABOUT ME */}
         <section id="about">
           <div className="scroll-mt-16 border-t border-ink px-5 py-14">
             <Reveal as="h2" size="headline" lines={[d.about.heading]} />
             <p className="mt-4 font-sans text-[13px] text-faint text-left">{d.about.sub}</p>
             <div className="mt-8 max-w-prose">
               {d.about.paragraphs.map((p) => (
-                <p key={p.slice(0, 24)} className="font-sans text-[15px] leading-[1.65] text-soft text-left">
+                <p key={p.slice(0, 24)} className="view-rise font-sans text-[15px] leading-[1.65] text-soft text-left">
                   {p}
                 </p>
               ))}
             </div>
-            <ol className="mt-12 grid grid-cols-1 gap-px border border-ink bg-ink md:grid-cols-3">
-              {d.about.principles.map((p) => (
-                <li key={p.n} className="view-rise bg-background p-5">
-                  <span className="font-sans text-[13px] text-faint tabular-nums">{p.n}</span>
-                  <h3 className="mt-3 font-disp font-medium text-[clamp(20px,2.4vw,32px)] leading-[0.9] tracking-tight text-left">
-                    {p.title}
-                  </h3>
-                  <p className="mt-3 font-sans text-[13px] leading-[1.65] text-soft text-left">
-                    {p.body}
-                  </p>
-                </li>
-              ))}
-            </ol>
           </div>
         </section>
 
-        {/* WHAT I DO */}
-        <section id="services">
+        {/* EXPERTISE */}
+        <section id="expertise">
           <div className="scroll-mt-16 border-t border-ink px-5 py-14">
-            <Reveal as="h2" size="headline" lines={[d.services.heading]} />
-            <p className="mt-4 font-sans text-[13px] text-faint text-left">{d.services.sub}</p>
-            <ul className="mt-10 grid grid-cols-1 gap-px bg-ink md:grid-cols-2">
-              {d.services.items.map((s, i) => (
-                <li key={s.title} className="view-rise bg-background p-5">
-                  <h3 className="font-disp font-medium text-[clamp(20px,2.4vw,32px)] leading-[0.9] tracking-tight text-left">
-                    <span className="mr-3 font-sans text-[13px] text-faint tabular-nums">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                    {s.title}
-                  </h3>
-                  <p className="mt-3 max-w-prose font-sans text-[13px] leading-[1.65] text-soft text-left">
-                    {s.body}
-                  </p>
+            <Reveal as="h2" size="headline" lines={[d.expertise.heading]} />
+            <p className="mt-4 font-sans text-[13px] text-faint text-left">{d.expertise.sub}</p>
+            <ul className="mt-10 border-t border-ink">
+              {d.expertise.items.map((s) => (
+                <li
+                  key={s.n}
+                  className="view-rise grid grid-cols-1 gap-2 border-b border-ink py-6 sm:grid-cols-[64px_1fr] sm:gap-6"
+                >
+                  <span className="font-sans text-[13px] text-faint tabular-nums sm:pt-1">
+                    {s.n}
+                  </span>
+                  <div>
+                    <h3 className="font-disp font-medium text-[clamp(20px,2.6vw,36px)] leading-[0.9] tracking-tight text-left">
+                      {s.title}
+                    </h3>
+                    <p className="mt-3 max-w-prose font-sans text-[13px] leading-[1.65] text-soft text-left">
+                      {s.body}
+                    </p>
+                  </div>
                 </li>
               ))}
             </ul>
           </div>
         </section>
 
-        {/* SELECTED WORK */}
-        <section id="work" className="scroll-mt-16">
-          <header className="px-5 py-14">
-            <Reveal as="h2" size="headline" lines={[d.work.heading]} />
-            <p className="mt-4 font-sans text-[13px] text-faint text-left">{d.work.sub}</p>
-          </header>
-          <FeaturedWork work={d.work.items} />
-        </section>
+        {/* MY APPROACH */}
+        <Approach d={d.approach} />
 
-        {/* HOW I WORK */}
-        <Process d={d.process} />
-
-        {/* TECH STACK */}
+        {/* TECHNICAL SKILLS */}
         <TechStack d={d.stack} />
 
-        {/* CURRENTLY EXPLORING */}
-        <section id="exploring">
+        {/* PHILOSOPHY band */}
+        <section id="philosophy">
+          <div className="scroll-mt-16 border-t border-ink bg-background px-5 py-14">
+            <Reveal as="h2" size="headline" lines={[d.philosophy.heading]} />
+            <div className="mt-8 max-w-3xl">
+              {d.philosophy.paragraphs.map((p) => (
+                <p key={p.slice(0, 24)} className="view-rise font-sans text-[clamp(17px,2vw,22px)] leading-[1.7] text-soft text-left">
+                  {p}
+                </p>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CURRENT INTERESTS */}
+        <section id="interests">
           <div className="scroll-mt-16 border-y border-ink px-5 py-14">
-            <Reveal as="h2" size="headline" lines={[d.exploring.heading]} />
-            <p className="mt-4 font-sans text-[13px] text-faint text-left">{d.exploring.intro}</p>
+            <Reveal as="h2" size="headline" lines={[d.interests.heading]} />
+            <p className="mt-4 font-sans text-[13px] text-faint text-left">{d.interests.intro}</p>
             <ul className="mt-8 max-w-prose font-sans text-[15px] leading-[1.7] text-soft">
-              {d.exploring.bullets.map((b) => (
+              {d.interests.bullets.map((b) => (
                 <li key={b} className="view-rise flex gap-3 border-b border-ink/30 py-3">
                   <span aria-hidden="true" className="text-faint">—</span>
                   <span>{b}</span>
@@ -147,14 +151,8 @@ export default function HomePage({ d }: { d: Dict }) {
         <section id="contact" className="scroll-mt-16 px-5 py-16">
           <Reveal as="h2" size="headline" lines={[d.contact.heading]} />
           <div className="mt-8 max-w-3xl">
-            <p className="font-sans text-[15px] leading-[1.6] font-medium text-ink text-left">
-              {d.contact.lead}
-            </p>
-            <p className="mt-4 max-w-prose font-sans text-[15px] leading-[1.65] text-soft text-left">
+            <p className="max-w-prose font-sans text-[15px] leading-[1.65] text-soft text-left">
               {d.contact.sub}
-            </p>
-            <p className="mt-10 font-disp font-medium text-[clamp(40px,8vw,96px)] leading-[0.85] tracking-tight text-ink text-left">
-              {d.contact.outro}
             </p>
             <div className="mt-8 flex flex-wrap items-baseline gap-6 font-sans text-[13px] text-ink">
               {d.contact.links.map((l) => (
@@ -169,7 +167,7 @@ export default function HomePage({ d }: { d: Dict }) {
                 </a>
               ))}
             </div>
-            <p className="mt-6 font-sans text-[13px] text-faint">{d.contact.note}</p>
+            <p className="mt-10 font-sans text-[13px] text-faint">{d.contact.note}</p>
           </div>
         </section>
 
@@ -178,16 +176,16 @@ export default function HomePage({ d }: { d: Dict }) {
 
       <StickerSlapFooter
         wordmark="ryosuke kureha."
-        navHref={d.locale === 'ko' ? '/#work' : `/${d.locale}/#work`}
+        navHref={d.locale === 'ko' ? '/#about' : `/${d.locale}/#about`}
+        navLabel="about"
         jobs={[
           { title: 'product engineering' },
-          { title: 'AI automation' },
+          { title: 'software architecture' },
         ]}
-        address={['bcrossb.inc', 'tokyo, japan']}
+        address={[]}
         note="*github is the inbox — issues are the quicker way in."
         credits={[
           { role: 'design & code', name: 'ryosuke kureha' },
-          { role: 'at', name: 'bcrossb.inc, tokyo' },
           { role: 'type', name: 'inter tight + felt-tip script' },
         ]}
       />

@@ -2,15 +2,15 @@ import Reveal from '@/components/reveal'
 import type { Dict } from '@/lib/content'
 
 /**
- * Process — "Less Complexity. More Impact.", how I work in six
- * steps. Broadsheet ruled rows, left-aligned, monochrome. Rows rise
- * into view (view-rise, 21st.dev Scroll Reveal); the vertical rail
- * draws itself with scroll (sdlc-rail, CSS scroll timelines —
- * 21st.dev Scroll Progress / Line Draw family). Zero runtime JS.
+ * Approach — "Simple by Design.", the design principles. Broadsheet
+ * ruled rows, left-aligned, monochrome. Rows rise into view
+ * (view-rise, 21st.dev Scroll Reveal); the vertical rail draws
+ * itself with scroll (sdlc-rail, CSS scroll timelines — 21st.dev
+ * Scroll Progress / Line Draw family). Zero runtime JS.
  */
-export default function Process({ d }: { d: Dict['process'] }) {
+export default function Approach({ d }: { d: Dict['approach'] }) {
   return (
-    <section id="process">
+    <section id="approach">
       <div className="scroll-mt-16 border-t border-ink bg-background px-5 py-14">
         <Reveal as="h2" size="headline" lines={[d.heading]} />
         <p className="mt-4 font-sans text-[13px] text-faint text-left">{d.sub}</p>
@@ -26,7 +26,7 @@ export default function Process({ d }: { d: Dict['process'] }) {
           </div>
 
           <ol className="sm:pl-10">
-            {d.steps.map((s) => (
+            {d.items.map((s) => (
               <li
                 key={s.n}
                 className="view-rise grid grid-cols-1 gap-2 border-b border-ink py-6 sm:grid-cols-[64px_1fr] sm:gap-6"

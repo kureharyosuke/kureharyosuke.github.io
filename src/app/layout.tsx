@@ -15,9 +15,9 @@ const interTight = Inter_Tight({
 })
 
 export const metadata: Metadata = {
-  title: 'Yunseok Oh — portfolio',
+  title: 'Ryosuke Kureha — Product Engineer',
   description:
-    'Yunseok Oh — design & AI engineer at BCROSSB.inc. Agent systems, agent memory, skills and tooling.',
+    'Ryosuke Kureha — Product Engineer / Full-Stack Developer. Turning complexity into clarity: clean architecture, practical engineering, and reliable software systems.',
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
