@@ -197,6 +197,7 @@ export default function HomePage({ d }: { d: Dict }) {
         note="*github is the inbox — issues are the quicker way in."
         credits={[
           { role: 'design & code', name: 'ryosuke kureha' },
+          { role: 'company', name: 'BCROSSB Inc.', href: 'https://bcrossb.com' },
           { role: 'type', name: 'inter tight + felt-tip script' },
         ]}
       />

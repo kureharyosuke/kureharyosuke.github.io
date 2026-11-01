@@ -25,7 +25,20 @@ export default function AboutPage({ d }: { d: Dict }) {
               <dt className="font-sans t-label text-faint">
                 {row.label}
               </dt>
-              <dd className="font-sans t-note text-soft">{row.value}</dd>
+              <dd className="font-sans t-note text-soft">
+                {row.href ? (
+                  <a
+                    href={row.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="no-underline hover:underline decoration-1 underline-offset-4"
+                  >
+                    {row.value} ↗
+                  </a>
+                ) : (
+                  row.value
+                )}
+              </dd>
             </div>
           ))}
         </dl>
@@ -48,6 +61,7 @@ export default function AboutPage({ d }: { d: Dict }) {
         note="*github is the inbox — issues are the quicker way in."
         credits={[
           { role: 'design & code', name: 'ryosuke kureha' },
+          { role: 'company', name: 'BCROSSB Inc.', href: 'https://bcrossb.com' },
           { role: 'type', name: 'inter tight + felt-tip script' },
         ]}
       />

@@ -162,7 +162,7 @@ export type StickerSpec =
 export type SocialKind = "linkedin" | "instagram" | "tiktok" | "x" | "youtube" | "dribbble" | "github"
 export type Social = { kind: SocialKind; href: string; label?: string }
 export type Job = { title: string; href?: string }
-export type Credit = { role: string; name: string }
+export type Credit = { role: string; name: string; href?: string }
 
 export interface StickerSlapFooterProps {
   wordmark?: string
@@ -968,7 +968,18 @@ export default function StickerSlapFooter({
                 {credits.map((c, i) => (
                   <li key={i}>
                     <b>{c.role}</b>
-                    <strong>{c.name}</strong>
+                    {c.href ? (
+                      <a
+                        href={c.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="no-underline hover:underline"
+                      >
+                        <strong>{c.name}</strong>
+                      </a>
+                    ) : (
+                      <strong>{c.name}</strong>
+                    )}
                   </li>
                 ))}
               </ul>

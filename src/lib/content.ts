@@ -6,8 +6,9 @@
  * Display headings stay English in all locales (Altason broadsheet
  * house style); editorial copy switches. Persona: Ryosuke Kureha —
  * Product Engineer / Full-Stack Developer. Personal-developer
- * portfolio: no company, no services, no client data — technical
- * identity and engineering principles only.
+ * portfolio based on personal technical identity. Company ownership is
+ * disclosed only as a plain footer credit and an About-page row
+ * (no services, no client data, no titles).
  */
 
 export type Locale = 'ko' | 'en' | 'ja'
@@ -56,7 +57,7 @@ export type Dict = {
   interests: { heading: string; intro: string; bullets: string[] }
   contact: { heading: string; sub: string; links: { label: string; href: string }[]; note: string }
   drift: { down: string; up: string }
-  aboutPage: { heading: string; paragraph: string; rows: { label: string; value: string }[]; back: string }
+  aboutPage: { heading: string; paragraph: string; rows: { label: string; value: string; href?: string }[]; back: string }
 }
 
 const githubUrl = 'https://github.com/kureharyosuke'
@@ -192,6 +193,7 @@ export const dicts: Record<Locale, Dict> = {
       rows: [
         { label: 'Role', value: 'Product Engineer / Full-Stack Developer' },
         { label: 'Focus', value: 'System Design · API Integration · Automation' },
+        { label: 'Company', value: 'BCROSSB Inc.', href: 'https://bcrossb.com' },
         { label: 'GitHub', value: 'github.com/kureharyosuke' },
       ],
       back: '→ 랜딩 시트로 돌아가기',
@@ -309,6 +311,7 @@ export const dicts: Record<Locale, Dict> = {
       rows: [
         { label: 'Role', value: 'Product Engineer / Full-Stack Developer' },
         { label: 'Focus', value: 'System Design · API Integration · Automation' },
+        { label: 'Company', value: 'BCROSSB Inc.', href: 'https://bcrossb.com' },
         { label: 'GitHub', value: 'github.com/kureharyosuke' },
       ],
       back: '→ Back to the landing sheet',
@@ -426,6 +429,7 @@ export const dicts: Record<Locale, Dict> = {
       rows: [
         { label: 'Role', value: 'Product Engineer / Full-Stack Developer' },
         { label: 'Focus', value: 'System Design · API Integration · Automation' },
+        { label: 'Company', value: 'BCROSSB Inc.', href: 'https://bcrossb.com' },
         { label: 'GitHub', value: 'github.com/kureharyosuke' },
       ],
       back: '→ ランディングシートに戻る',
