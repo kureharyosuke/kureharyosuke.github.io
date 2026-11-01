@@ -5,7 +5,7 @@ import Approach from '@/components/approach'
 import TechStack from '@/components/tech-stack'
 import StickerSlapFooter from '@/components/sticker-slap-footer'
 import ScrollWordReveal from '@/components/scroll-word-reveal'
-import { switcher, type Dict } from '@/lib/content'
+import { switcher, localePath, type Dict } from '@/lib/content'
 
 /**
  * Scroll-scrubbed drift band — 21st.dev "Scroll Velocity Text"
@@ -27,6 +27,7 @@ function DriftBand({ down, up }: { down: string; up: string }) {
 
 /** Home body — shared across the three locales, copy via dictionary. */
 export default function HomePage({ d }: { d: Dict }) {
+  const rootPrefix = localePath(d.locale) === '/' ? '' : localePath(d.locale)
   return (
     <div id="top" lang={d.locale} className="flex min-h-screen flex-col bg-background text-foreground">
       <SiteHeader links={d.header.links} switcher={switcher(d.locale)} />
@@ -45,7 +46,7 @@ export default function HomePage({ d }: { d: Dict }) {
             />
             <div className="mt-2 flex gap-6 font-sans t-note text-ink">
               <Link
-                href={d.locale === 'ko' ? '/#about' : `/${d.locale}/#about`}
+                href={`${rootPrefix}/#about`}
                 className="no-underline hover:underline decoration-1 underline-offset-4"
               >
                 {d.hero.ctaAbout}
@@ -59,7 +60,7 @@ export default function HomePage({ d }: { d: Dict }) {
                 {d.hero.ctaGithub} ↗
               </a>
               <Link
-                href={d.locale === 'ko' ? '/#contact' : `/${d.locale}/#contact`}
+                href={`${rootPrefix}/#contact`}
                 className="no-underline hover:underline decoration-1 underline-offset-4"
               >
                 {d.hero.ctaContact}
@@ -187,7 +188,7 @@ export default function HomePage({ d }: { d: Dict }) {
 
       <StickerSlapFooter
         wordmark="ryosuke kureha."
-        navHref={d.locale === 'ko' ? '/#about' : `/${d.locale}/#about`}
+        navHref={`${rootPrefix}/#about`}
         navLabel="about"
         jobs={[
           { title: 'product engineering' },

@@ -1,6 +1,6 @@
 /**
  * Content dictionary for the tiny static i18n layer.
- * Default site (`/`, `/about`) is Korean; `/en`, `/ja` mirror it.
+ * Default site (`/`) is Japanese; `/ko`, `/en` mirror it.
  * Static export only — no middleware, no runtime locale detection.
  *
  * Display headings stay English in all locales (Altason broadsheet
@@ -23,7 +23,7 @@ export const switcherLabels: Record<Locale, string> = {
 
 /** Locale-prefixed path for a top-level page ('' = home, 'about' = about). */
 export const localePath = (locale: Locale, section: '' | 'about' = '') => {
-  const prefix = locale === 'ko' ? '' : '/' + locale
+  const prefix = locale === 'ja' ? '' : '/' + locale
   return section ? `${prefix}/${section}` : prefix || '/'
 }
 

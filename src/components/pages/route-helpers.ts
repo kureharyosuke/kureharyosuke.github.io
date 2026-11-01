@@ -4,13 +4,13 @@ import { dicts, switcher, type Locale } from '@/lib/content'
 
 export const makeHomeMetadata = (locale: Locale): Metadata => {
   const d = dicts[locale]
-  const p = locale === 'ko' ? '' : '/' + locale
+  const p = locale === 'ja' ? '' : '/' + locale
   return {
     title: d.meta.title,
     description: d.meta.description,
     alternates: {
       canonical: p || '/',
-      languages: { ko: '/', en: '/en', ja: '/ja' },
+      languages: { ja: '/', ko: '/ko', en: '/en' },
     },
   }
 }

@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="ko" className={`${inter.variable} ${interTight.variable}`}>
+    <html lang="ja" className={`${inter.variable} ${interTight.variable}`}>
       <body>{children}</body>
     </html>
   )

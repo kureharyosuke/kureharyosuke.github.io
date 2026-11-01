@@ -2,7 +2,7 @@ import Link from 'next/link'
 import SiteHeader from '@/components/site-header'
 import StickerSlapFooter from '@/components/sticker-slap-footer'
 import Reveal from '@/components/reveal'
-import { switcher, type Dict } from '@/lib/content'
+import { switcher, localePath, type Dict } from '@/lib/content'
 
 /** About body — shared across the three locales, copy via dictionary. */
 export default function AboutPage({ d }: { d: Dict }) {
@@ -43,7 +43,7 @@ export default function AboutPage({ d }: { d: Dict }) {
           ))}
         </dl>
         <Link
-          href={d.locale === 'ko' ? '/' : `/${d.locale}`}
+          href={localePath(d.locale)}
           className="view-rise mt-10 inline-block font-sans t-note no-underline hover:underline decoration-1 underline-offset-4"
         >
           {d.aboutPage.back}
