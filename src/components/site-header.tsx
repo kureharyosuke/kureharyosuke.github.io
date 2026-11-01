@@ -36,9 +36,9 @@ export default function SiteHeader({
       <Link
         href="/"
         className="text-ink no-underline"
-        aria-label="Yunseok Oh — home"
+        aria-label="Ryosuke Kureha — home"
       >
-        <ScriptWordmark text="yunseok oh." />
+        <ScriptWordmark text="ryosuke kureha." />
       </Link>
       <ul className="flex items-baseline gap-5 text-[13px] text-soft">
         {links.map((link) => (

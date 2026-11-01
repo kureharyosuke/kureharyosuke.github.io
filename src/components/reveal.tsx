@@ -2,7 +2,7 @@ import type { CSSProperties, JSX } from 'react'
 import StaggerText from './stagger-text'
 import { cn } from '@/lib/utils'
 
-type RevealSize = 'display' | 'headline'
+type RevealSize = 'display' | 'display-sm' | 'headline'
 type RevealProps = {
   lines: string[]
   as?: keyof JSX.IntrinsicElements
@@ -29,6 +29,7 @@ export default function Reveal({
       className={cn(
         'font-disp font-medium text-ink leading-[0.85] tracking-tight text-left',
         size === 'display' && 'text-[min(16vw,288px)]',
+        size === 'display-sm' && 'text-[min(10vw,180px)] whitespace-nowrap',
         size === 'headline' && 'text-[clamp(40px,8vw,96px)]',
         className,
       )}

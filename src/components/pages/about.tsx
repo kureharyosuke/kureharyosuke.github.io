@@ -10,20 +10,17 @@ export default function AboutPage({ d }: { d: Dict }) {
     <div className="flex min-h-screen flex-col bg-background text-foreground">
       <SiteHeader links={d.header.links} switcher={switcher(d.locale, 'about')} />
       <main className="grow px-5 pt-16 pb-10">
-        <Reveal as="h1" size="headline" lines={[d.about.heading]} />
+        <Reveal as="h1" size="headline" lines={[d.aboutPage.heading]} />
         <div className="view-rise mt-8 max-w-prose">
-          <p className="font-sans text-[15px] leading-[1.6] text-soft text-left">
-            {d.about.paragraph}
+          <p className="font-sans text-[15px] leading-[1.65] text-soft text-left">
+            {d.aboutPage.paragraph}
           </p>
         </div>
         <dl className="mt-10 border-t border-b border-ink">
-          {d.about.rows.map((row, i) => (
+          {d.aboutPage.rows.map((row) => (
             <div
               key={row.label}
-              className={
-                'flex items-baseline justify-between border-ink px-1 py-4 view-rise' +
-                (i < d.about.rows.length - 1 ? ' border-b' : '')
-              }
+              className="view-rise flex items-baseline justify-between border-ink px-1 py-4 [&:not(:last-child)]:border-b"
             >
               <dt className="font-sans text-[11px] uppercase tracking-[0.08em] text-faint">
                 {row.label}
@@ -36,10 +33,24 @@ export default function AboutPage({ d }: { d: Dict }) {
           href={d.locale === 'ko' ? '/' : `/${d.locale}`}
           className="view-rise mt-10 inline-block font-sans text-[13px] no-underline hover:underline decoration-1 underline-offset-4"
         >
-          {d.about.back}
+          {d.aboutPage.back}
         </Link>
       </main>
-      <StickerSlapFooter />
+      <StickerSlapFooter
+        wordmark="ryosuke kureha."
+        navHref={d.locale === 'ko' ? '/#work' : `/${d.locale}/#work`}
+        jobs={[
+          { title: 'product engineering' },
+          { title: 'AI automation' },
+        ]}
+        address={['bcrossb.inc', 'tokyo, japan']}
+        note="*github is the inbox — issues are the quicker way in."
+        credits={[
+          { role: 'design & code', name: 'ryosuke kureha' },
+          { role: 'at', name: 'bcrossb.inc, tokyo' },
+          { role: 'type', name: 'inter tight + felt-tip script' },
+        ]}
+      />
     </div>
   )
 }

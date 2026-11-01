@@ -1,17 +1,5 @@
-import Link from 'next/link'
-import { Card, CardContent } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+import type { WorkItem } from '@/lib/content'
 import { cn } from '@/lib/utils'
-
-type Work = {
-  n: string
-  title: string
-  year: string
-  field: string
-  href: string
-  blurb: string
-  plate: 'lines' | 'dots' | 'hatch'
-}
 
 /* Monochrome pattern plates — CSS patterns, no bitmaps (static export). */
 const PLATES = {
@@ -21,16 +9,17 @@ const PLATES = {
 } as const
 
 /**
- * Featured work — stacking cards. Pattern adapted from 21st.dev
- * "Stacking Cards" (danielpetho) as CSS sticky stacking: each card
- * pins below the header at a stepped offset, the next card rides
- * over it. view-rise fades each deck in on scroll.
+ * Featured work — Selected Work as sticky stacking cards. Pattern
+ * adapted from 21st.dev "Stacking Cards" (danielpetho) as CSS sticky
+ * stacking: each card pins below the header at a stepped offset, the
+ * next card rides over it. view-rise fades each deck in on scroll.
+ * Hover never changes color — underline only.
  */
 export default function FeaturedWork({
   work,
   className,
 }: {
-  work: Work[]
+  work: WorkItem[]
   className?: string
 }) {
   return (
@@ -41,36 +30,65 @@ export default function FeaturedWork({
           className="view-rise border-b border-ink bg-background"
           style={{ position: 'sticky', top: `${56 + i * 12}px`, zIndex: i + 1 } as React.CSSProperties}
         >
-          <Card className="group/card rounded-none border-x-0 border-t-0 border-b border-b-ink bg-background p-5 shadow-none">
-            <CardContent className="flex flex-col gap-5 p-0 md:flex-row md:items-stretch md:gap-10">
-              <div
-                aria-hidden="true"
-                className={cn(
-                  'w-full shrink-0 bg-background bg-[size:14px_14px] transition-[background-position] duration-700 md:h-[34vh] md:w-1/3 group-hover/card:bg-[position:14px_14px]',
-                  PLATES[item.plate],
-                )}
-              />
-              <div className="flex min-w-0 grow flex-col items-start justify-center gap-4">
-                <div className="flex gap-4 font-sans text-[11px] uppercase tracking-[0.08em] text-faint">
-                  <Badge variant="outline" className="rounded-none border-ink/40 bg-transparent px-2 py-0.5 text-[11px] text-faint">
-                    {item.n}
-                  </Badge>
-                  <span className="leading-[1.2]">{item.field}</span>
-                  <span className="leading-[1.2]">{item.year}</span>
-                </div>
-                <Link
-                  href={item.href}
-                  className="font-disp font-medium leading-[1.2] text-[clamp(28px,3.4vw,56px)] no-underline hover:underline decoration-1 underline-offset-4 text-left"
-                >
-                  {item.title}
-                </Link>
-                <p className="max-w-prose font-sans text-[13px] leading-[1.6] text-soft text-left">
-                  {item.blurb}
-                </p>
-                <span className="font-sans text-[13px] text-faint">View on GitHub ↗</span>
+          <article className="group/card flex flex-col gap-5 bg-background p-5 md:flex-row md:items-stretch md:gap-10">
+            <div
+              aria-hidden="true"
+              className={cn(
+                'w-full shrink-0 bg-background bg-[size:14px_14px] transition-[background-position] duration-700 md:h-[34vh] md:w-1/3 group-hover/card:bg-[position:14px_14px]',
+                PLATES[item.plate],
+              )}
+            />
+            <div className="flex min-w-0 grow flex-col items-start justify-center gap-3 text-left">
+              <div className="flex gap-4 font-sans text-[11px] uppercase tracking-[0.08em] text-faint">
+                <span className="font-normal leading-[1.2]">{item.n}</span>
+                <span className="leading-[1.2]">{item.tagline}</span>
               </div>
-            </CardContent>
-          </Card>
+              <h3 className="font-disp font-medium leading-[1.2] text-[clamp(28px,3.4vw,56px)] tracking-tight text-ink">
+                {item.website ? (
+                  <a
+                    href={item.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="no-underline hover:underline decoration-1 underline-offset-4"
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  item.name
+                )}
+              </h3>
+              <p className="max-w-prose font-sans text-[13px] leading-[1.65] text-soft">
+                {item.body}
+              </p>
+              {item.bullets.length > 0 && (
+                <ul className="grid gap-1.5 font-sans text-[13px] leading-[1.6] text-soft">
+                  {item.bullets.map((b) => (
+                    <li key={b} className="flex gap-2">
+                      <span aria-hidden="true" className="text-faint">—</span>
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {item.tech && (
+                <p className="font-sans text-[13px] text-faint">
+                  <span className="uppercase tracking-[0.08em]">{item.techLabel ?? 'Tech'}</span>
+                  {' · '}
+                  <span className="text-soft">{item.tech}</span>
+                </p>
+              )}
+              {item.website && (
+                <a
+                  href={item.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-sans text-[13px] text-ink no-underline hover:underline decoration-1 underline-offset-4"
+                >
+                  Website ↗
+                </a>
+              )}
+            </div>
+          </article>
         </li>
       ))}
     </ul>
