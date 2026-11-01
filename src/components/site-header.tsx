@@ -40,7 +40,7 @@ export default function SiteHeader({
       >
         <ScriptWordmark text="ryosuke kureha." />
       </Link>
-      <ul className="flex items-baseline gap-5 text-[13px] text-soft">
+      <ul className="flex items-baseline gap-5 text-soft t-note">
         {links.map((link) => (
           <li key={link.href} className="hidden sm:block">
             <Link

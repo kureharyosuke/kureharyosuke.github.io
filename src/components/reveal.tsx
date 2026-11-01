@@ -27,7 +27,7 @@ export default function Reveal({
   return (
     <Tag
       className={cn(
-        'font-disp font-medium text-ink leading-[0.85] tracking-tight text-left',
+        'font-disp font-medium text-ink leading-[0.85] tracking-[-0.04em] text-left',
         size === 'display' && 'text-[min(16vw,288px)]',
         size === 'display-sm' && 'text-[min(10vw,180px)] whitespace-nowrap',
         size === 'headline' && 'text-[clamp(40px,8vw,96px)]',

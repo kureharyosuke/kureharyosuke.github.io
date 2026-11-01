@@ -14,15 +14,15 @@ export default function TechStack({ d }: { d: Dict['stack'] }) {
     <section id="stack">
       <div className="scroll-mt-16 border-t border-ink px-5 py-14">
         <Reveal as="h2" size="headline" lines={[d.heading]} />
-        <p className="mt-4 font-sans text-[13px] text-faint text-left">{d.sub}</p>
+        <p className="mt-4 font-sans t-note text-faint text-left">{d.sub}</p>
 
         <ul className="mt-10 border-t border-ink">
           {d.groups.map((g) => (
             <li key={g.n} className="view-rise border-b border-ink">
               <details className="group/acc">
                 <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-                  <span className="flex items-baseline gap-4 py-4 font-sans text-[13px] text-soft">
-                    <span aria-hidden="true" className="shrink-0 text-faint tabular-nums">{g.n}</span>
+                  <span className="flex items-baseline gap-4 py-4 font-sans text-[14px] leading-[1.5] text-soft">
+                    <span aria-hidden="true" className="shrink-0 t-note text-faint tabular-nums">{g.n}</span>
                     <span className="grow no-underline group-hover/acc:underline decoration-1 underline-offset-4 sm:text-[15px]">
                       {g.label}
                     </span>
@@ -36,7 +36,7 @@ export default function TechStack({ d }: { d: Dict['stack'] }) {
                   </span>
                 </summary>
                 <ScrollWordReveal
-                  className="max-w-3xl pb-5 font-sans text-[13px] leading-[1.7] text-soft text-left sm:pl-8"
+                  className="font-sans t-body text-soft text-left max-w-prose pb-5 sm:pl-8"
                   text={g.items}
                 />
               </details>

@@ -24,7 +24,7 @@ export default function LocaleSelect({ items, className }: { items: SwitcherItem
           <select
             value={current}
             onChange={onChange}
-            className="appearance-none rounded-none border border-ink bg-background py-0.5 pl-2 pr-5 font-sans text-[13px] text-soft outline-none focus-visible:outline focus-visible:outline-[2.5px] focus-visible:outline-offset-2 focus-visible:outline-ink/60"
+            className="appearance-none rounded-none border border-ink bg-background py-0.5 pl-2 pr-5 font-sans t-note text-soft outline-none focus-visible:outline focus-visible:outline-[2.5px] focus-visible:outline-offset-2 focus-visible:outline-ink/60"
           >
             {items.map((item) => (
               <option key={item.href} value={item.href}>

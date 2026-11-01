@@ -266,3 +266,59 @@
   -webkit-text-stroke: 1px var(--ink);
   color: transparent;
 }
+
+/*
+ * Altason type roles — one deliberate scale (impeccable /typeset).
+ * Roles, not values: display (Reveal), t-row (numbered row titles),
+ * t-prose-lg (statement prose), t-lead (intro lead), t-body (prose
+ * copy, 16px floor, CJK-friendly 1.7 leading), t-note (chrome,
+ * deks, footnotes), t-label (uppercase eyebrows). Color, tone and
+ * hover stay utilities; size and rhythm never drift per component.
+ */
+.t-label {
+  font-size: 12px;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.t-note {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.t-body {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.t-lead {
+  font-size: 17px;
+  line-height: 1.65;
+  font-weight: 500;
+}
+
+.t-prose-lg {
+  font-size: clamp(17px, 2vw, 22px);
+  line-height: 1.7;
+  font-weight: 500;
+}
+
+.t-row {
+  font-family: var(--font-disp);
+  font-weight: 500;
+  font-size: clamp(22px, 2.8vw, 40px);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+/*
+ * CJK line-break quality: Korean keeps lexical units intact
+ * (no mid-word breaks like "개발합니다" → "다."), scoped to the
+ * lang='ko' subtree. Japanese keeps the browser's default rules
+ * (neutrally spaced kana breaks are normal ja typography).
+ */
+[lang='ko'] {
+  word-break: keep-all;
+}
