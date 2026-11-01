@@ -1,17 +1,20 @@
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import ScriptWordmark from './script-wordmark'
+import LocaleSelect from './locale-select'
+import type { SwitcherItem } from './locale-select'
 
 export type HeaderLink = { href: string; label: string }
-export type SwitcherItem = { href: string; label: string; current: boolean }
+export type { SwitcherItem }
 
 /**
  * Wordmark row. Deliberately a div (not <nav>) — per the
  * Altason review. The felt-tip ScriptWordmark replaces the text
  * logo (same single-stroke alphabet as the favicon and the
- * sticker footer). The hairline under it is a scroll progress
- * bar (21st.dev "Scroll Progress", ibelick) scrubbed by the
- * root scroll timeline, CSS-only.
+ * sticker footer). Language switching is a native select box.
+ * The hairline under it is a scroll progress bar (21st.dev
+ * "Scroll Progress", ibelick) scrubbed by the root scroll
+ * timeline, CSS-only.
  */
 export default function SiteHeader({
   links,
@@ -25,7 +28,7 @@ export default function SiteHeader({
   return (
     <div
       className={cn(
-        'relative sticky top-0 z-10 flex items-baseline justify-between bg-background px-5 py-4 border-b border-ink',
+        'relative sticky top-0 z-10 flex items-baseline justify-between gap-4 bg-background px-5 py-4 border-b border-ink',
         className,
       )}
       aria-label="Site"
@@ -48,23 +51,9 @@ export default function SiteHeader({
             </Link>
           </li>
         ))}
-        {switcherItems.map((item) => (
-          <li key={item.href} className="tabular-nums">
-            {item.current ? (
-              <span className="text-ink underline decoration-1 underline-offset-4">
-                {item.label}
-              </span>
-            ) : (
-              <Link
-                href={item.href}
-                className="no-underline hover:underline decoration-1 underline-offset-4"
-                hrefLang={item.label === '한국어' ? 'ko' : item.label === 'English' ? 'en' : 'ja'}
-              >
-                {item.label}
-              </Link>
-            )}
-          </li>
-        ))}
+        <li>
+          <LocaleSelect items={switcherItems} />
+        </li>
       </ul>
       <div
         aria-hidden="true"
