@@ -2,15 +2,22 @@ import Link from 'next/link'
 import SiteHeader from '@/components/site-header'
 import StickerSlapFooter from '@/components/sticker-slap-footer'
 import Reveal from '@/components/reveal'
+import SiteJsonLd from '@/components/site-jsonld'
 import { switcher, localePath, type Dict } from '@/lib/content'
 
 /** About body — shared across the three locales, copy via dictionary. */
 export default function AboutPage({ d }: { d: Dict }) {
+  const homeHref = localePath(d.locale)
   return (
     <div lang={d.locale} className="flex min-h-screen flex-col bg-background text-foreground">
-      <SiteHeader links={d.header.links} switcher={switcher(d.locale, 'about')} />
+      <SiteHeader links={d.header.links} switcher={switcher(d.locale, 'about')} homeHref={homeHref} />
       <main className="grow px-5 pt-16 pb-10">
-        <Reveal as="h1" size="headline" lines={[d.aboutPage.heading]} />
+        <h1>
+          <span className="sr-only">Ryosuke Kureha — {d.aboutPage.heading}</span>
+          <span aria-hidden="true" className="block">
+            <Reveal as="span" size="headline" lines={[d.aboutPage.heading]} className="block" />
+          </span>
+        </h1>
         <div className="view-rise mt-8 max-w-prose">
           <p className="font-sans t-body text-soft text-left">
             {d.aboutPage.paragraph}
@@ -42,6 +49,9 @@ export default function AboutPage({ d }: { d: Dict }) {
             </div>
           ))}
         </dl>
+        <p className="view-rise mt-6 font-sans t-note text-faint">
+          {d.aboutPage.updated}
+        </p>
         <Link
           href={localePath(d.locale)}
           className="view-rise mt-10 inline-block font-sans t-note no-underline hover:underline decoration-1 underline-offset-4"
@@ -51,7 +61,8 @@ export default function AboutPage({ d }: { d: Dict }) {
       </main>
       <StickerSlapFooter
         wordmark="ryosuke kureha."
-        navHref="/"
+        homeHref={homeHref}
+        navHref={homeHref}
         navLabel="home"
         jobs={[
           { title: 'product engineering' },
@@ -65,6 +76,7 @@ export default function AboutPage({ d }: { d: Dict }) {
           { role: 'type', name: 'inter tight + felt-tip script' },
         ]}
       />
+      <SiteJsonLd locale={d.locale} section="about" />
     </div>
   )
 }

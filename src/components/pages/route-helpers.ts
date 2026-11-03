@@ -1,18 +1,9 @@
 import type { Metadata } from 'next'
 import HomePage from '@/components/pages/home'
-import { dicts, switcher, type Locale } from '@/lib/content'
+import { switcher, type Locale } from '@/lib/content'
+import { pageMetadata } from '@/lib/seo'
 
-export const makeHomeMetadata = (locale: Locale): Metadata => {
-  const d = dicts[locale]
-  const p = locale === 'ja' ? '' : '/' + locale
-  return {
-    title: d.meta.title,
-    description: d.meta.description,
-    alternates: {
-      canonical: p || '/',
-      languages: { ja: '/', ko: '/ko', en: '/en' },
-    },
-  }
-}
+export const makeHomeMetadata = (locale: Locale): Metadata =>
+  pageMetadata(locale, '')
 
 export { HomePage, switcher }

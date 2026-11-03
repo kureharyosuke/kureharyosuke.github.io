@@ -4,6 +4,10 @@ import * as React from 'react'
 
 export type SwitcherItem = { href: string; label: string; current: boolean }
 
+/** GitHub Pages canonicalises directory URLs with a trailing slash. */
+const internalHref = (href: string) =>
+  href === '/' ? '/' : `${href.replace(/\/+$/, '')}/`
+
 /**
  * LocaleSelect — the i18n switcher as a native select box, restyled
  * to the monochrome broadsheet: radius 0, ink hairline, system chevron
@@ -12,7 +16,7 @@ export type SwitcherItem = { href: string; label: string; current: boolean }
  * links working without JavaScript.
  */
 export default function LocaleSelect({ items, className }: { items: SwitcherItem[]; className?: string }) {
-  const current = items.find((i) => i.current)?.href ?? '/'
+  const current = internalHref(items.find((i) => i.current)?.href ?? '/')
   const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     window.location.assign(e.target.value)
   }
@@ -27,7 +31,7 @@ export default function LocaleSelect({ items, className }: { items: SwitcherItem
             className="appearance-none rounded-none border border-ink bg-background py-0.5 pl-2 pr-5 font-sans t-note text-soft outline-none focus-visible:outline focus-visible:outline-[2.5px] focus-visible:outline-offset-2 focus-visible:outline-ink/60"
           >
             {items.map((item) => (
-              <option key={item.href} value={item.href}>
+              <option key={item.href} value={internalHref(item.href)}>
                 {item.label}
               </option>
             ))}
@@ -46,7 +50,7 @@ export default function LocaleSelect({ items, className }: { items: SwitcherItem
           {items
             .filter((i) => !i.current)
             .map((i) => (
-              <a key={i.href} href={i.href} className="no-underline hover:underline decoration-1 underline-offset-4">
+              <a key={i.href} href={internalHref(i.href)} className="no-underline hover:underline decoration-1 underline-offset-4">
                 {i.label}
               </a>
             ))}

@@ -41,6 +41,8 @@ export type Dict = {
   meta: { title: string; description: string }
   header: { links: { href: string; label: string }[] }
   hero: {
+    /** Screen-reader / search H1 that names the person and role. */
+    h1: string
     headingLines: string[]
     lead: string
     body: string
@@ -49,7 +51,7 @@ export type Dict = {
     ctaContact: string
     githubUrl: string
   }
-  about: { heading: string; sub: string; paragraphs: string[] }
+  about: { heading: string; sub: string; paragraphs: string[]; more: string }
   expertise: { heading: string; sub: string; items: FocusItem[] }
   approach: { heading: string; sub: string; items: FocusItem[] }
   stack: { heading: string; sub: string; groups: StackGroup[] }
@@ -57,7 +59,15 @@ export type Dict = {
   interests: { heading: string; intro: string; bullets: string[] }
   contact: { heading: string; sub: string; links: { label: string; href: string }[]; note: string }
   drift: { down: string; up: string }
-  aboutPage: { heading: string; paragraph: string; rows: { label: string; value: string; href?: string }[]; back: string }
+  aboutPage: {
+    heading: string
+    metaTitle: string
+    metaDescription: string
+    updated: string
+    paragraph: string
+    rows: { label: string; value: string; href?: string }[]
+    back: string
+  }
 }
 
 const githubUrl = 'https://github.com/kureharyosuke'
@@ -85,12 +95,13 @@ export const dicts: Record<Locale, Dict> = {
   ko: {
     locale: 'ko',
     meta: {
-      title: 'Ryosuke Kureha — Product Engineer',
+      title: 'Ryosuke Kureha — 프로덕트 엔지니어 · 풀스택 개발자',
       description:
-        'Ryosuke Kureha — Product Engineer / Full-Stack Developer. Turning complexity into clarity: clean architecture, practical engineering, and reliable software systems.',
+        'Ryosuke Kureha의 포트폴리오. React와 Next.js로 웹 앱과 API를 설계·개발하는 프로덕트 엔지니어입니다.',
     },
     header: { links: headerLinks('ko') },
     hero: {
+      h1: 'Ryosuke Kureha — 프로덕트 엔지니어 겸 풀스택 개발자.',
       headingLines: ['Turning Complexity', 'Into Clarity.'],
       lead: '사려 깊은 디지털 경험, 확장 가능한 애플리케이션, 그리고 신뢰할 수 있는 소프트웨어 시스템을 설계하고 개발합니다.',
       body: '복잡한 문제를 깔끔한 아키텍처, 실용적인 엔지니어링, 지속적인 개선을 통해 해결하는 데 집중합니다.',
@@ -102,6 +113,7 @@ export const dicts: Record<Locale, Dict> = {
     about: {
       heading: 'A Developer Who Thinks Beyond Code.',
       sub: '코드 너머를 생각하는 개발자입니다.',
+      more: '프로필 전체 보기',
       paragraphs: [
         '저는 소프트웨어 아키텍처, 프로덕트 엔지니어링, 자동화에 깊은 관심을 가진 풀스택 개발자, Ryosuke Kureha입니다.',
         '복잡한 요구사항을 단순하고 유지보수하기 쉬운 해결책으로 바꾸는 일을 좋아합니다.',
@@ -188,13 +200,19 @@ export const dicts: Record<Locale, Dict> = {
     },
     aboutPage: {
       heading: 'About',
+      metaTitle: '소개 — Ryosuke Kureha, 프로덕트 엔지니어',
+      metaDescription:
+        '소프트웨어 아키텍처, 프로덕트 엔지니어링, 자동화에 집중하는 풀스택 개발자 Ryosuke Kureha의 소개입니다.',
+      updated: '최근 업데이트: 2026년 11월',
       paragraph:
         'Ryosuke Kureha는 소프트웨어 아키텍처, 프로덕트 엔지니어링, 자동화에 깊은 관심을 가진 풀스택 개발자입니다. 복잡한 요구사항을 단순하고 유지보수하기 쉬운 해결책으로 바꾸는 것을 즐기며, 명확성·단순성·유지보수성을 설계의 기준으로 삼습니다.',
       rows: [
+        { label: 'Name', value: 'Ryosuke Kureha' },
         { label: 'Role', value: 'Product Engineer / Full-Stack Developer' },
         { label: 'Focus', value: 'System Design · API Integration · Automation' },
+        { label: 'Stack', value: 'React · Next.js · TypeScript · Node.js · Python · PostgreSQL' },
         { label: 'Company', value: 'BCROSSB Inc.', href: 'https://bcrossb.com' },
-        { label: 'GitHub', value: 'github.com/kureharyosuke' },
+        { label: 'GitHub', value: 'github.com/kureharyosuke', href: githubUrl },
       ],
       back: '→ 랜딩 시트로 돌아가기',
     },
@@ -203,12 +221,13 @@ export const dicts: Record<Locale, Dict> = {
   en: {
     locale: 'en',
     meta: {
-      title: 'Ryosuke Kureha — Product Engineer',
+      title: 'Ryosuke Kureha — Product Engineer & Full-Stack Developer',
       description:
-        'Ryosuke Kureha — Product Engineer / Full-Stack Developer. Turning complexity into clarity: clean architecture, practical engineering, and reliable software systems.',
+        'Ryosuke Kureha is a product engineer and full-stack developer. He builds React, Next.js and TypeScript apps, APIs and automation with clean architecture.',
     },
     header: { links: headerLinks('en') },
     hero: {
+      h1: 'Ryosuke Kureha — Product Engineer and Full-Stack Developer.',
       headingLines: ['Turning Complexity', 'Into Clarity.'],
       lead: 'I design and build thoughtful digital experiences, scalable applications, and reliable software systems.',
       body: 'My focus is on solving complex problems through clean architecture, practical engineering, and continuous improvement.',
@@ -220,6 +239,7 @@ export const dicts: Record<Locale, Dict> = {
     about: {
       heading: 'A Developer Who Thinks Beyond Code.',
       sub: 'Ryosuke Kureha — Product Engineer / Full-Stack Developer.',
+      more: 'Read the full profile',
       paragraphs: [
         "I'm Ryosuke Kureha, a full-stack developer with a strong interest in software architecture, product engineering, and automation.",
         'I enjoy transforming complex requirements into simple, maintainable solutions.',
@@ -306,13 +326,19 @@ export const dicts: Record<Locale, Dict> = {
     },
     aboutPage: {
       heading: 'About',
+      metaTitle: 'About — Ryosuke Kureha, Product Engineer',
+      metaDescription:
+        'About Ryosuke Kureha, a full-stack developer focused on software architecture, product engineering and automation. Clarity and maintainability guide each build.',
+      updated: 'Last updated: November 2026',
       paragraph:
         'Ryosuke Kureha is a full-stack developer with a strong interest in software architecture, product engineering, and automation. He enjoys transforming complex requirements into simple, maintainable solutions — with clarity, simplicity and maintainability as the standard for every design.',
       rows: [
+        { label: 'Name', value: 'Ryosuke Kureha' },
         { label: 'Role', value: 'Product Engineer / Full-Stack Developer' },
         { label: 'Focus', value: 'System Design · API Integration · Automation' },
+        { label: 'Stack', value: 'React · Next.js · TypeScript · Node.js · Python · PostgreSQL' },
         { label: 'Company', value: 'BCROSSB Inc.', href: 'https://bcrossb.com' },
-        { label: 'GitHub', value: 'github.com/kureharyosuke' },
+        { label: 'GitHub', value: 'github.com/kureharyosuke', href: githubUrl },
       ],
       back: '→ Back to the landing sheet',
     },
@@ -321,12 +347,13 @@ export const dicts: Record<Locale, Dict> = {
   ja: {
     locale: 'ja',
     meta: {
-      title: 'Ryosuke Kureha — Product Engineer',
+      title: 'Ryosuke Kureha — プロダクトエンジニア / フルスタック開発者',
       description:
-        'Ryosuke Kureha — Product Engineer / Full-Stack Developer. Turning complexity into clarity: clean architecture, practical engineering, and reliable software systems.',
+        'Ryosuke Kurehaのポートフォリオ。React・Next.jsでWebアプリとAPIを設計・開発するプロダクトエンジニアです。',
     },
     header: { links: headerLinks('ja') },
     hero: {
+      h1: 'Ryosuke Kureha — プロダクトエンジニア / フルスタック開発者。',
       headingLines: ['Turning Complexity', 'Into Clarity.'],
       lead: '使いやすいデジタル体験、スケーラブルなアプリケーション、そして信頼性の高いソフトウェアシステムを設計・開発します。',
       body: 'クリーンなアーキテクチャ、実践的なエンジニアリング、継続的な改善によって複雑な問題を解決することに焦点を当てています。',
@@ -338,6 +365,7 @@ export const dicts: Record<Locale, Dict> = {
     about: {
       heading: 'A Developer Who Thinks Beyond Code.',
       sub: 'コードの向こうを考える開発者です。',
+      more: 'プロフィールを見る',
       paragraphs: [
         'ソフトウェアアーキテクチャ、プロダクトエンジニアリング、自動化に深い関心を持つフルスタック開発者のRyosuke Kurehaです。',
         '複雑な要件をシンプルで保守しやすい解決策に変えることを大切にしています。',
@@ -424,13 +452,19 @@ export const dicts: Record<Locale, Dict> = {
     },
     aboutPage: {
       heading: 'About',
+      metaTitle: 'プロフィール — Ryosuke Kureha, プロダクトエンジニア',
+      metaDescription:
+        'ソフトウェアアーキテクチャ、プロダクトエンジニアリング、自動化に取り組むフルスタック開発者、Ryosuke Kurehaのプロフィールです。',
+      updated: '最終更新: 2026年11月',
       paragraph:
         'Ryosuke Kurehaは、ソフトウェアアーキテクチャ、プロダクトエンジニアリング、自動化に深い関心を持つフルスタック開発者です。複雑な要件をシンプルで保守しやすい解決策に変えることを楽しみとしており、明確さ・シンプルさ・保守性を設計の基準としています。',
       rows: [
+        { label: 'Name', value: 'Ryosuke Kureha' },
         { label: 'Role', value: 'Product Engineer / Full-Stack Developer' },
         { label: 'Focus', value: 'System Design · API Integration · Automation' },
+        { label: 'Stack', value: 'React · Next.js · TypeScript · Node.js · Python · PostgreSQL' },
         { label: 'Company', value: 'BCROSSB Inc.', href: 'https://bcrossb.com' },
-        { label: 'GitHub', value: 'github.com/kureharyosuke' },
+        { label: 'GitHub', value: 'github.com/kureharyosuke', href: githubUrl },
       ],
       back: '→ ランディングシートに戻る',
     },

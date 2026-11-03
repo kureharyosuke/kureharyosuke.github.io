@@ -523,12 +523,21 @@ function StickerSvg({ kind, text }: { kind: StickerKind; text?: string }) {
 }
 
 const isExternal = (href?: string) => !!href && /^https?:/.test(href)
+
+/** GitHub Pages canonicalises directory URLs with a trailing slash. */
+const internalHref = (href: string) => {
+  if (!href.startsWith('/')) return href
+  const [path, ...hash] = href.split('#')
+  const clean = path === '/' ? '/' : path.replace(/\/+$/, '') + '/'
+  return hash.length ? `${clean}#${hash.join('#')}` : clean
+}
+
 const linkProps = (href?: string) => ({
-  href: href || "#",
-  target: isExternal(href) ? "_blank" : undefined,
-  rel: isExternal(href) ? "noopener noreferrer" : undefined,
+  href: href ? internalHref(href) : '#',
+  target: isExternal(href) ? '_blank' : undefined,
+  rel: isExternal(href) ? 'noopener noreferrer' : undefined,
   onClick: (e: React.MouseEvent) => {
-    if (!href || href === "#") e.preventDefault()
+    if (!href || href === '#') e.preventDefault()
   },
 })
 

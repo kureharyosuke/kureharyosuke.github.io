@@ -5,6 +5,7 @@ import Approach from '@/components/approach'
 import TechStack from '@/components/tech-stack'
 import StickerSlapFooter from '@/components/sticker-slap-footer'
 import ScrollWordReveal from '@/components/scroll-word-reveal'
+import SiteJsonLd from '@/components/site-jsonld'
 import { switcher, localePath, type Dict } from '@/lib/content'
 
 /**
@@ -28,14 +29,20 @@ function DriftBand({ down, up }: { down: string; up: string }) {
 /** Home body — shared across the three locales, copy via dictionary. */
 export default function HomePage({ d }: { d: Dict }) {
   const rootPrefix = localePath(d.locale) === '/' ? '' : localePath(d.locale)
+  const homeHref = localePath(d.locale)
   return (
     <div id="top" lang={d.locale} className="flex min-h-screen flex-col bg-background text-foreground">
-      <SiteHeader links={d.header.links} switcher={switcher(d.locale)} />
+      <SiteHeader links={d.header.links} switcher={switcher(d.locale)} homeHref={homeHref} />
 
       <main className="grow">
         {/* HERO */}
         <section className="px-5 pt-16 pb-10">
-          <Reveal as="h1" size="display-sm" lines={d.hero.headingLines} stagger />
+          <h1>
+            <span className="sr-only">{d.hero.h1}</span>
+            <span aria-hidden="true" className="block">
+              <Reveal as="span" size="display-sm" lines={d.hero.headingLines} stagger className="block" />
+            </span>
+          </h1>
           <div className="mt-8 flex max-w-3xl flex-col gap-6">
             <p className="font-sans t-lead text-ink text-left">
               {d.hero.lead}
@@ -80,6 +87,12 @@ export default function HomePage({ d }: { d: Dict }) {
                   {p}
                 </p>
               ))}
+              <Link
+                href={localePath(d.locale, 'about')}
+                className="view-rise inline-block pt-1 font-sans t-note text-ink no-underline hover:underline decoration-1 underline-offset-4"
+              >
+                {d.about.more} →
+              </Link>
             </div>
           </div>
         </section>
@@ -188,7 +201,8 @@ export default function HomePage({ d }: { d: Dict }) {
 
       <StickerSlapFooter
         wordmark="ryosuke kureha."
-        navHref={`${rootPrefix}/#about`}
+        homeHref={homeHref}
+        navHref={localePath(d.locale, 'about')}
         navLabel="about"
         jobs={[
           { title: 'product engineering' },
@@ -202,6 +216,7 @@ export default function HomePage({ d }: { d: Dict }) {
           { role: 'type', name: 'inter tight + felt-tip script' },
         ]}
       />
+      <SiteJsonLd locale={d.locale} />
     </div>
   )
 }
