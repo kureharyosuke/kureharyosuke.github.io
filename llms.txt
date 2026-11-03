@@ -1,0 +1,43 @@
+# Ryosuke Kureha — Product Engineer / Full-Stack Developer
+
+> Ryosuke Kureha is a product engineer and full-stack developer. He builds React, Next.js and TypeScript apps, APIs and automation with clean architecture.
+
+- Canonical site: https://kureharyosuke.github.io/
+- Languages: English, Japanese, Korean
+- Last updated: 2026-11-04
+
+## Profile
+
+- Name: Ryosuke Kureha
+- Role: Product Engineer / Full-Stack Developer
+- Company: BCROSSB Inc. (https://bcrossb.com)
+- Focus: System Design, API Integration, Automation
+- GitHub: https://github.com/kureharyosuke
+
+## Pages
+
+- [English home](https://kureharyosuke.github.io/en/): role, expertise, approach, stack, contact
+- [Japanese home](https://kureharyosuke.github.io/): 役割、専門分野、アプローチ、技術スタック、連絡先
+- [Korean home](https://kureharyosuke.github.io/ko/): 역할, 전문 분야, 접근 방식, 기술 스택, 연락처
+- [About](https://kureharyosuke.github.io/en/about/): name, role, focus, stack, company, GitHub
+
+## Expertise
+
+- Full-Stack Development: Building modern web applications with React, Next.js, TypeScript, and backend technologies, with attention to performance, usability, and maintainability.
+- Software Architecture: Designing modular systems, reusable components, and clear application boundaries to manage complexity and support future development.
+- Backend & API Engineering: Working with APIs, relational databases, data modeling, and application logic to build reliable software foundations.
+- Automation & Integration: Connecting systems and services through APIs, webhooks, and workflow automation to simplify repetitive processes.
+- AI-Assisted Engineering: Exploring the practical application of language models, AI-assisted development, and intelligent automation in modern software workflows.
+
+## Stack
+
+- Frontend: React · Next.js · TypeScript · JavaScript · Tailwind CSS · HTML · CSS
+- Backend: Node.js · Python · FastAPI · REST APIs · PostgreSQL
+- Infrastructure: AWS · Docker · Vercel · Cloudflare · Git · GitHub
+- Engineering: System Design · API Integration · Component Architecture · Responsive Design · Testing · Technical SEO
+- Automation & AI: Google Apps Script · Webhooks · LLM APIs · AI-Assisted Development
+
+## Contact
+
+- GitHub: https://github.com/kureharyosuke
+- Preferred contact: GitHub issues or profile messages

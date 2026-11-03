@@ -1,0 +1,107 @@
+# Ryosuke Kureha — Product Engineer / Full-Stack Developer
+
+> Ryosuke Kureha is a product engineer and full-stack developer. He builds React, Next.js and TypeScript apps, APIs and automation with clean architecture.
+
+- Canonical site: https://kureharyosuke.github.io/
+- Languages: English, Japanese, Korean
+- Last updated: 2026-11-04
+
+## Profile
+
+- Name: Ryosuke Kureha
+- Role: Product Engineer / Full-Stack Developer
+- Focus: System Design · API Integration · Automation
+- Stack: React · Next.js · TypeScript · Node.js · Python · PostgreSQL
+- Company: BCROSSB Inc. (https://bcrossb.com)
+- GitHub: github.com/kureharyosuke (https://github.com/kureharyosuke)
+
+## About
+
+I'm Ryosuke Kureha, a full-stack developer with a strong interest in software architecture, product engineering, and automation.
+I enjoy transforming complex requirements into simple, maintainable solutions.
+My approach to development focuses on understanding the problem first, choosing the right tools, and building systems that are easy to extend and improve.
+I believe great software is not about adding more features or adopting every new technology. It's about making thoughtful decisions that create meaningful value.
+
+Ryosuke Kureha is a full-stack developer with a strong interest in software architecture, product engineering, and automation. He enjoys transforming complex requirements into simple, maintainable solutions — with clarity, simplicity and maintainability as the standard for every design.
+
+## Expertise
+
+### Full-Stack Development
+
+Building modern web applications with React, Next.js, TypeScript, and backend technologies, with attention to performance, usability, and maintainability.
+
+### Software Architecture
+
+Designing modular systems, reusable components, and clear application boundaries to manage complexity and support future development.
+
+### Backend & API Engineering
+
+Working with APIs, relational databases, data modeling, and application logic to build reliable software foundations.
+
+### Automation & Integration
+
+Connecting systems and services through APIs, webhooks, and workflow automation to simplify repetitive processes.
+
+### AI-Assisted Engineering
+
+Exploring the practical application of language models, AI-assisted development, and intelligent automation in modern software workflows.
+
+## Approach
+
+### Understand Before Building
+
+Start with the problem, not the technology.
+
+### Remove Unnecessary Complexity
+
+Prefer clear, focused solutions over excessive abstraction and overengineering.
+
+### Build for Maintainability
+
+Write code that is understandable, reusable, and easy to evolve.
+
+### Validate Through Practice
+
+Use testing, feedback, and iteration to improve software quality.
+
+### Keep Learning
+
+Continuously explore better tools, techniques, and approaches to software engineering.
+
+## Technologies and tools
+
+- Frontend: React · Next.js · TypeScript · JavaScript · Tailwind CSS · HTML · CSS
+- Backend: Node.js · Python · FastAPI · REST APIs · PostgreSQL
+- Infrastructure: AWS · Docker · Vercel · Cloudflare · Git · GitHub
+- Engineering: System Design · API Integration · Component Architecture · Responsive Design · Testing · Technical SEO
+- Automation & AI: Google Apps Script · Webhooks · LLM APIs · AI-Assisted Development
+
+## Philosophy
+
+I value clarity over cleverness, simplicity over unnecessary complexity, and maintainability over short-term convenience.
+Every technical decision comes with trade-offs. My goal is to understand those trade-offs and build solutions that remain practical as requirements evolve.
+Software should make difficult things easier — not introduce complexity for its own sake.
+
+## Current interests
+
+- Scalable web application architecture
+- Reusable software components and patterns
+- AI-assisted development workflows
+- Intelligent automation
+- Developer productivity and tooling
+- Performance and reliability engineering
+
+## Contact
+
+I'm always interested in meaningful technical conversations, sharing ideas, and exploring new approaches to software development. Feel free to connect with me on GitHub.
+
+- GitHub: https://github.com/kureharyosuke
+
+## Localized pages
+
+- [Japanese home](https://kureharyosuke.github.io/)
+- [Korean home](https://kureharyosuke.github.io/ko/)
+- [English home](https://kureharyosuke.github.io/en/)
+- [About](https://kureharyosuke.github.io/en/about/)
+- [Korean about](https://kureharyosuke.github.io/ko/about/)
+- [Japanese about](https://kureharyosuke.github.io/about/)
